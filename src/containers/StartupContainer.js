@@ -3,12 +3,20 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/startupActions';
 import StartupFrame from '../components/StartupFrame';
+import uuid from 'uuid';
+import R from 'ramda';
 
 class StartupContainer extends React.Component {
 
   constructor(props, context) {
     super(props, context);
 
+    this.searchProfiles = this.searchProfiles.bind(this);
+
+    this.state = {
+      profiles: props.profiles,
+      original: props.profiles
+    };
   }
 
   componentDidMount() {
@@ -16,9 +24,55 @@ class StartupContainer extends React.Component {
     */
   }
 
+
+  searchProfiles(profileQuery){
+
+    let filterByTags = R.curry((tags, profile) => {
+      return tags.some(tag => profile.tags.includes(tag));
+    });
+
+    console.log("searching with query " + profileQuery);
+
+    let tags = profileQuery.split(/\s+/).map(tag => {
+      return tag.replace('#', '');
+    });
+
+    console.log(tags);
+
+    let filteredProfiles = R.filter(filterByTags(tags), this.props.profiles);
+    console.log(filteredProfiles);
+
+    filteredProfiles = filteredProfiles.length > 0 ? filteredProfiles : this.state.original;
+
+    this.setState({
+      profiles: filteredProfiles,
+      original: this.state.original
+    });
+
+  }
+
   render() {
+    let query;
+
     return (
-        <StartupFrame/>
+        <StartupFrame>
+
+          <input placeholder="Search Profiles"
+            ref={node => {
+              query = node;
+            }}
+            onChange={() => {
+              this.searchProfiles(query.value);
+            }}
+          />
+          {this.state.profiles.map(profile =>
+            <ul key={uuid.v4()}>
+              <li key={uuid.v4()}>name: {profile.name}</li>
+              <li key={uuid.v4()}>email: {profile.email}</li>
+            </ul>
+          )}
+
+        </StartupFrame>
     );
   }
 }
@@ -26,7 +80,7 @@ class StartupContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-      profile: state.profile
+      profiles: state.profiles
     };
   }
 
@@ -41,7 +95,8 @@ StartupContainer.contextTypes = {
 };
 
 StartupContainer.propTypes = {
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  profiles: PropTypes.array.isRequired
 };
 
 export default connect(

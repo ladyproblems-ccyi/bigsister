@@ -16,8 +16,7 @@ const StartupFrame = (props) => {
 };
 
 StartupFrame.propTypes = {
-  children: PropTypes.element.required
+  children: PropTypes.object
 };
-
 
 export default StartupFrame;

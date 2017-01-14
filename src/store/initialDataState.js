@@ -18,7 +18,8 @@ let profile = function(){
     password: faker.internet.password(),
     age: randomAge(),
     languages: [],
-    badges: []
+    badges: [],
+    tags:[]
   };
 };
 
@@ -39,14 +40,23 @@ profiles.forEach((profile, index) => {
     addAlegre(profile);
     addCari(profile);
     profile.languages.push("Inglés");
+    profile.tags = profile.tags.concat(["relaciones, marriage, carrera, sexual, salud"]);
   } else if(numProfiles % index === 1) {
     addAmable(profile);
-  } else {
-    addHablador(profile);
+    profile.tags = profile.tags.concat(["profesional", "ayuda", "bilemia", "food"]);
   }
+  addHablador(profile);
   profile.languages.push("Castellano");
   profile.email = profile.name.substring(0, profile.name.indexOf(' ')) + "@gmail.es";
 });
+
+let putExtraTags = profile => {
+  profile.tags = profile.tags.concat(["vagina", "health", "sexual health"]);
+}
+
+putExtraTags(profiles[numProfiles-1]);
+putExtraTags(profiles[numProfiles-2]);
+putExtraTags(profiles[numProfiles-3]);
 
 //set a couple older ages
 profiles[numProfiles-1].age = 64;
