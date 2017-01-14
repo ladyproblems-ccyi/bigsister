@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+
+# Dependencies
+node_modules
+src/node
+node
+
+#build folders
+dist
+target
+
+
+# Mac files
+.DS_Store

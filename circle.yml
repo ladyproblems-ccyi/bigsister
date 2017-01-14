@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 6.3.1
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: bigsister
+dependencies:
+  pre:
+    - npm install -g babel-cli
