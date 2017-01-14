@@ -89,7 +89,9 @@
     "eslint-plugin-jsx-a11y": "1.5.5",
     "eslint-plugin-react": "^6.4.1",
     "eslint-watch": "^2.1.14",
+    "faker": "^3.1.0",
     "mocha": "^3.1.2",
+    "ramda": "^0.23.0",
     "react-addons-test-utils": "^15.3.2",
     "sinon": "^1.17.6"
   }

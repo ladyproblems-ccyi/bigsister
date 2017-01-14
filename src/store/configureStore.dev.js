@@ -4,8 +4,13 @@
 
 import {createStore, compose} from 'redux';
 import rootReducer from '../reducers';
+import initialData from './initialDataState';
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState = initialData) {
+
+  console.log('   =======   Initial State data ');
+  console.log( initialData);
+
   const store = createStore(rootReducer, initialState, compose(
     // Add other middleware on this line...
     window.devToolsExtension ? window.devToolsExtension() : f => f // add support for Redux dev tools

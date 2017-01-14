@@ -7,8 +7,8 @@ const rootReducer = combineReducers({
   * the keys of the objects here correspond to the fields of the state object
   *  that the rootReducer will manage
   */
-  athletes: profileReducer,
-  routing: routerReducer
+  //badges: badesReducer,
+  profiles: profileReducer
 });
 
 
