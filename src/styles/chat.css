@@ -1,8 +1,5 @@
-bg {
-    position: "relative";
-    overflow: "hidden";
-    width: "100px";
-    height: "100px";
+.bg {
+    background: url(../images/chat-background.png);
 }
 
 .clickSpace {
@@ -11,14 +8,24 @@ bg {
 }
 
 .me1 {
-    float: right;
+    img {
+        width: 45%;
+        float: right;
+    }
+    padding-bottom: 45px;
 }
 
 .you {
     float:left;
-
+    img {
+        width: 90%;
+    }
 }
 
 .me2{
     float: right;
+    img {
+        width: 40%;
+        float: right;
+    }
 }
