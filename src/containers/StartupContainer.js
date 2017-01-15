@@ -42,7 +42,7 @@ class StartupContainer extends React.Component {
     let filteredProfiles = R.filter(filterByTags(tags), this.props.profiles);
     console.log(filteredProfiles);
 
-    filteredProfiles = filteredProfiles.length > 0 ? filteredProfiles : this.state.original;
+    filteredProfiles = filteredProfiles.length == 0  && profileQuery.length === 0 ? this.state.original : filteredProfiles;
 
     this.setState({
       profiles: filteredProfiles,

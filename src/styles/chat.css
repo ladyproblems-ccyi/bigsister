@@ -1,0 +1,24 @@
+bg {
+    position: "relative";
+    overflow: "hidden";
+    width: "100px";
+    height: "100px";
+}
+
+.clickSpace {
+    width: 100%;
+    heigth: 50%;
+}
+
+.me1 {
+    float: right;
+}
+
+.you {
+    float:left;
+
+}
+
+.me2{
+    float: right;
+}
